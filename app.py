@@ -23,15 +23,15 @@ def root():
         auth = requests.auth.HTTPBasicAuth(client_id, secret_key)
         response = requests.post(url, data=data, auth=auth)
         if response.status_code == 200:
-            session['user_id'] = response.json()['user_id']
+            for info in ('user_id', 'access_token'):
+                session[info] = response.json()[info]
 
-    if 'user_id' in session:
-        user_id = session['user_id']
-        user_sets = get_user_sets(client_id, user_id)
+    if 'user_id' in session and 'access_token' in session:
+        user_sets = get_user_sets(client_id, session['user_id'])
         return render_template('sets.html', sets=user_sets)
 
     return render_template('start.html', client_id=client_id)
 
 @app.route('/api/1.0/reset/<setname>/<term>', methods=['PUT'])
 def reset(setname, term):
-    reset_term_stats(setname, term, client_id, session['user_id'])
+    reset_term_stats(setname, term, client_id, session['user_id'], session['access_token'])

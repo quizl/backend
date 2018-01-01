@@ -1,5 +1,25 @@
 <html>
+  <head>
+    <script>
+      function resetTermStats(setName, term) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('PUT', 'http://localhost:5000/api/1.0/reset/' + setName + '/' + term);
+        xhr.send();
+      }
+    </script>
+  </head>
   <body>
-    <pre>{{ sets }}</pre>
+    <ul>
+      {% for user_set in sets %}
+      <li>
+        {{ user_set.title }} (id={{ user_set.set_id }})
+        <ul>
+          {% for term in user_set.terms %}
+          <li>{{ term.term }} (id={{ term.term_id }}) (<a href="#" onclick="resetTermStats(&quot;{{ user_set.title }}&quot;, &quot;{{ term.term }}&quot;)">reset stats</a>)</li>
+          {% endfor %}
+        </ul>
+      </li>
+    {% endfor %}
+    </ul>
   </body>
 </html>
