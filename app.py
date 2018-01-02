@@ -32,6 +32,6 @@ def root():
 
     return render_template('start.html', client_id=client_id)
 
-@app.route('/api/1.0/reset/<setname>/<term>', methods=['PUT'])
-def reset(setname, term):
-    reset_term_stats(setname, term, client_id, session['user_id'], session['access_token'])
+@app.route('/api/1.0/reset/<int:set_id>/<int:term_id>', methods=['PUT'])
+def reset(set_id, term_id):
+    reset_term_stats(set_id, term_id, client_id, session['user_id'], session['access_token'])
