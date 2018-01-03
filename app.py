@@ -35,3 +35,4 @@ def root():
 @app.route('/api/1.0/reset/<int:set_id>/<int:term_id>', methods=['PUT'])
 def reset(set_id, term_id):
     reset_term_stats(set_id, term_id, client_id, session['user_id'], session['access_token'])
+    return 'OK'
