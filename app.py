@@ -18,7 +18,7 @@ def root():
         data = {
             'grant_type': 'authorization_code',
             'code': code,
-            'redirect_uri': 'http://localhost:5000/',
+            'redirect_uri': request.url_root,
         }
         auth = requests.auth.HTTPBasicAuth(client_id, secret_key)
         response = requests.post(url, data=data, auth=auth)
@@ -28,7 +28,7 @@ def root():
 
     if 'user_id' in session and 'access_token' in session:
         user_sets = get_user_sets(client_id, session['user_id'])
-        return render_template('sets.html', sets=user_sets)
+        return render_template('sets.html', sets=user_sets, api_url=request.url_root + 'api/1.0')
 
     return render_template('start.html', client_id=client_id)
 

@@ -3,7 +3,7 @@
     <script>
       function resetTermStats(setId, termId) {
         var xhr = new XMLHttpRequest();
-        xhr.open('PUT', 'http://localhost:5000/api/1.0/reset/' + setId + '/' + termId);
+        xhr.open('PUT', '{{ api_url }}/reset/' + setId + '/' + termId);
         xhr.send();
       }
     </script>
