@@ -3,7 +3,7 @@
 Web app providing [quizler](https://github.com/quizl/quizler)'s collection of tools for
 [Quizlet](https://quizlet.com) flash cards.
 
-Currently hosted [here](http://ec2-52-214-168-229.eu-west-1.compute.amazonaws.com:5000/).
+Currently hosted [here](http://aurelienlourot.pythonanywhere.com/).
 
 ## Run locally
 
