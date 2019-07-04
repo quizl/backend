@@ -3,8 +3,6 @@
 Web app providing [quizler](https://github.com/quizl/quizler)'s collection of tools for
 [Quizlet](https://quizlet.com) flash cards.
 
-Currently hosted [here](http://aurelienlourot.pythonanywhere.com/).
-
 ## Run locally
 
 ```
